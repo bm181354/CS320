@@ -42,11 +42,6 @@ triangle_test
   (x: int, y: int, z: int): bool
 //
 (* ****** ****** *)
-//
-// How to compile:
-// patscc -o assignment0 assignment0.dats
-//
-(* ****** ****** *)
 
 implement
 main0 (argc, argv) =
@@ -65,4 +60,4 @@ val () = println! ("Good news: Your code has passed initial testing!")
 
 (* ****** ****** *)
 
-(* end of [assignment0.dats] *)
+(* end of [assign0.dats] *)
