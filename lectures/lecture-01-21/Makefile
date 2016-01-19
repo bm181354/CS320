@@ -8,16 +8,6 @@
 
 ######
 
-all:: fact
-regress:: fact; ./fact
-cleanall:: ; $(RMF) fact
-
-all:: hello
-regress:: hello; ./hello
-cleanall:: ; $(RMF) hello
-
-######
-
 RMF=rm -f
 
 ######
