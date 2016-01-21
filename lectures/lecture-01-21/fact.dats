@@ -52,7 +52,7 @@ end // end of [fact_trec]
 (* ****** ****** *)
 
 implement
-main0 () =
+main0((*void*)) =
 {
   val () = println! ("fact(10) = ", fact(10))
   val () = println! ("fact_trec(10) = ", fact_trec(10))
