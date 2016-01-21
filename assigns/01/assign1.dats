@@ -78,6 +78,7 @@ fun intsqrt (n: int): int
 //
 (* ****** ****** *)
 
+#if(0)
 implement
 main0 (argc, argv) =
 {
@@ -100,6 +101,7 @@ val () = assertloc(intsqrt(100*100-1) = 99)
 val () = println! ("Good news: Your code has passed initial testing!")
 //
 } (* end of [main0] *)
+#endif // #if(0)
 
 (* ****** ****** *)
 
