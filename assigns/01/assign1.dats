@@ -53,7 +53,28 @@ fact(n) = if n > 0 then n * fact(n-1) else 1
 // Please implement a function [try_fact] that
 // finds the first [n] such that fact(n) equals 0:
 //
-extern fun try_fact((*void*)): int
+extern
+fun try_fact((*void*)): int
+//
+(* ****** ****** *)
+//
+(*
+Please implement the function sqrt, which, given integer n, finds
+the integer k so that k * k <= n < (k + 1) * (k + 1). The complexity
+of the implementation should be O(log(n)).
+
+Hint:
+
+For each n >= 1, let n4 = n / 4.  Then either sqrt(n) = 2*sqrt(n4) or
+sqrt(n) = 2*sqrt(n4) + 1.
+
+*)
+//
+(*
+** HX: 10 points
+*)
+extern
+fun intsqrt (n: int): int
 //
 (* ****** ****** *)
 
@@ -73,10 +94,13 @@ val () = assertloc(fib(20) = r2)
 //
 val () = println! ("try_fact() = ", try_fact())
 //
+val () = assertloc(intsqrt(100*100) = 100)
+val () = assertloc(intsqrt(100*100-1) = 99)
+//
 val () = println! ("Good news: Your code has passed initial testing!")
 //
 } (* end of [main0] *)
 
 (* ****** ****** *)
 
-(* end of [assign0.dats] *)
+(* end of [assign1.dats] *)

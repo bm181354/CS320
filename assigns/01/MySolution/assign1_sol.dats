@@ -21,5 +21,13 @@ implement
 try_fact((*void*)) = 0
 //
 (* ****** ****** *)
+//
+// HX:
+// Please replace
+// this dummy implementation
+//
+implement intsqrt(n) = 0
+//
+(* ****** ****** *)
 
 (* end of [assign1_sol.dats] *)
