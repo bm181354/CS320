@@ -42,9 +42,22 @@ implement
 fact_trec(n) = let
 //
 fun
-loop(i: int, res: int): int =
-  if i <= n then loop (i+1, res * i) else res
+loop
+(
+  i: int, res: int
+) : int =
+(
 //
+if i <= n
+  then let
+    val i = i+1
+    val res = res * i
+  in
+    loop (i, res)
+  end // end of [then]
+  else res // end of [else]
+//
+)
 in
   loop(1, 1)
 end // end of [fact_trec]
@@ -56,6 +69,7 @@ main0((*void*)) =
 {
   val () = println! ("fact(10) = ", fact(10))
   val () = println! ("fact_trec(10) = ", fact_trec(10))
+  val () = println! ("fact_trec(1000000) = ", fact_trec(1000000))
 }
 
 (* ****** ****** *)
