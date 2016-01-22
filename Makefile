@@ -21,5 +21,10 @@ all::
 #	git merge upstream/master
 #
 ######
+#
+git-push:: ; \
+  git push https://bithwxi:xav640707@bitbucket.org/bithwxi/cs320-2016-spring.git
+#
+######
 
 ###### end of [Makefile] ######
