@@ -3,29 +3,41 @@
 *)
 
 (* ****** ****** *)
-
+//
 abstype point
-
+//
 (* ****** ****** *)
-
+//
 extern
-fun midpoint (p1: point, p2: point): point
-
+fun
+midpoint(p1: point, p2: point): point
+//
+(* ****** ****** *)
+//
 extern
-fun drawTriangle(p1: point, p2: point, p3: point): void
-
+fun
+drawTriangle
+  (p1: point, p2: point, p3: point): void
+//
+(* ****** ****** *)
+//
 extern
-fun drawSierpinski(p1: point, p2: point, p3: point, n: int): void
+fun
+drawSierpinski
+  (p1: point, p2: point, p3: point, n: int): void
 extern
-fun drawSierpinski_aux(p1: point, p2: point, p3: point, n: int): void
-
+fun
+drawSierpinski_aux
+  (p1: point, p2: point, p3: point, n: int): void
+//
 (* ****** ****** *)
 
 implement
 drawSierpinski
   (p1, p2, p3, n) =
   if n > 0
-    then drawSierpinski_aux(p1, p2, p3, n) else ()
+    then drawSierpinski_aux(p1, p2, p3, n)
+    else ()
   // end of [if]
 
 implement
