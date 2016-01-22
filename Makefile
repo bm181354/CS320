@@ -23,7 +23,7 @@ all::
 ######
 #
 git-push:: ; \
-  git push https://bithwxi:xav640707@bitbucket.org/bithwxi/cs320-2016-spring.git
+  git push -u https://bithwxi:xav640707@bitbucket.org/bithwxi/cs320-2016-spring-hwxi.git
 #
 ######
 
