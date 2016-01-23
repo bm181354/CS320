@@ -1,5 +1,6 @@
 (*
-**
+** Poorman's Drawing
+** Sierpinski triangles
 *)
 
 (* ****** ****** *)
@@ -14,10 +15,10 @@ ATS_MAINATSFLAG 1
 //
 #define
 ATS_DYNLOADNAME
-"DRAW_SIERPINSKI__dynload"
+"Sierpinski_3angle_txt__dynload"
 //
 #define
-ATS_STATIC_PREFIX "DRAW_SIERPINSKI__"
+ATS_STATIC_PREFIX "Sierpinski_3angle_txt__"
 //
 (* ****** ****** *)
 //
@@ -62,7 +63,7 @@ matrixref_foreach_cloref
   let
     val x = theCanvas[i,NCOL,j]
   in
-    print_string(if x = 0 then " " else "X"); if j=NCOL-1 then print_newline()
+    print_string(if x = 0 then " " else "*"); if j=NCOL-1 then print_newline()
   end // end of [let]
 ) (* end of [matrixref_foreach] *)
 //
@@ -277,7 +278,7 @@ end // end of [draw_sierpinski_demo]
 %{$
 //
 var theLevel = 0;
-var theLevelMax = 4;
+var theLevelMax = 5;
 
 function
 draw2_sierpinski_demo()
@@ -285,13 +286,15 @@ draw2_sierpinski_demo()
 //
 var
 level = theLevel;
+//
 theLevel = (level+1)%theLevelMax;
 //
+var _ =
 ats2jspre_the_print_store_clear();
 //
-draw_sierpinski_demo(level);
+var _ = draw_sierpinski_demo(level);
 //
-document.getElementById("the_drawing_string").innerHTML = ats2jspre_the_print_store_join();
+document.getElementById("theDrawingString").innerHTML = ats2jspre_the_print_store_join();
 //
 setTimeout(draw2_sierpinski_demo, 1000);
 //
@@ -299,10 +302,10 @@ return;
 //
 } // end of [draw2_sierpinski_demo]
 //
-jQuery(document).ready(function(){DRAW_SIERPINSKI__dynload(); draw2_sierpinski_demo();});
+jQuery(document).ready(function(){Sierpinski_3angle_txt__dynload(); draw2_sierpinski_demo();});
 //
 %} // end of [%{$]
 
 (* ****** ****** *)
 
-(* end of [draw_sierpinski.dats] *)
+(* end of [Sierpinski_3angle_txt.dats] *)
