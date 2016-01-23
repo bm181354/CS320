@@ -64,4 +64,4 @@ end // end of [drawSierpinski_aux]
 
 (* ****** ****** *)
 
-(* end of [draw.dats] *)
+(* end of [draw_sierpinski.dats] *)
