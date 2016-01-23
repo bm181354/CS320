@@ -4,6 +4,12 @@
 
 ######
 
+all:: fact
+regress:: fact; ./fact
+cleanall:: ; $(RMF) fact
+
+######
+
 %: %.dats; patscc -o $@ $<
 
 ######
