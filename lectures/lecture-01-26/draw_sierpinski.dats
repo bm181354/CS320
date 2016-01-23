@@ -277,7 +277,7 @@ end // end of [draw_sierpinski_demo]
 %{$
 //
 var theLevel = 0;
-var theLevelMax = 4;
+var theLevelMax = 5;
 
 function
 draw2_sierpinski_demo()
