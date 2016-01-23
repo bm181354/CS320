@@ -50,7 +50,7 @@ loop
 //
 if i <= n
   then let
-    val i = i+1
+    val i = i + 1
     val res = res * i
   in
     loop (i, res)
