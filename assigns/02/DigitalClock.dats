@@ -10,7 +10,7 @@
 (*
 //
 // Assignment #2
-// Due Thursday, January 28, 2016 at 11:59pm
+// Due Wednesday, February 3, 2016 at 11:59pm
 //
 *)
 (* ****** ****** *)
