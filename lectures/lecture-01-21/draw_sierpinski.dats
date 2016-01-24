@@ -1,5 +1,9 @@
 (*
 **
+** For illustrating
+** the use of recursion
+** in problem-solving
+**
 *)
 
 (* ****** ****** *)
