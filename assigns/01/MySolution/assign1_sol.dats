@@ -9,7 +9,19 @@
 // this dummy implementation
 //
 implement
-fib_trec(n) = 0
+fib_trec(n) = 
+ let
+   //val y =1
+   //val x =0
+   fun fib_more(x:int, y:int, n:int)=
+   if 
+    n >0 then fib_more(y,x+y,n-1)
+   else
+    x
+ in
+   fib_more(0,1,n)
+ end
+  
 //
 (* ****** ****** *)
 //
@@ -18,7 +30,14 @@ fib_trec(n) = 0
 // this dummy implementation
 //
 implement
-try_fact((*void*)) = 0
+try_fact((*void*)) = 
+ let 
+     //val num = n
+     fun more_f(n:int,y:int) =
+     if n = 0 then y else more_f(n-1,n*y)
+   in
+     more_f(9,1) 
+   end 
 //
 (* ****** ****** *)
 //
@@ -26,10 +45,19 @@ try_fact((*void*)) = 0
 // Please replace
 // this dummy implementation
 //
-implement intsqrt(n) = 0
+implement intsqrt(n) =  sqrt(n)
+
 //
 (* ****** ****** *)
-
+ fun sqrt(n:int):int 
+ 
+ implement sqrt(n:int) =
+  let
+     if n >= 1 then 2*sqrt(n/4) else 1
+  in
+    sqrt(n)
+  end
+(*****************)
 #ifdef
 MAIN_NONE
 #then
