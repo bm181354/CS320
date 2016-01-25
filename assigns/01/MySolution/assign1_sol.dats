@@ -45,19 +45,23 @@ try_fact((*void*)) =
 // Please replace
 // this dummy implementation
 //
-implement intsqrt(n) =  sqrt(n)
+
+
+
+implement intsqrt(n) = 
+let 
+(* ****** ****** *)
+ fun sqrt(n:int):int =
+ if n >= 1 
+ then 2*sqrt(n/4)
+ else 1
+(*****************)
+in
+sqrt(n)
+end
 
 //
-(* ****** ****** *)
- fun sqrt(n:int):int 
- 
- implement sqrt(n:int) =
-  let
-     if n >= 1 then 2*sqrt(n/4) else 1
-  in
-    sqrt(n)
-  end
-(*****************)
+
 #ifdef
 MAIN_NONE
 #then
