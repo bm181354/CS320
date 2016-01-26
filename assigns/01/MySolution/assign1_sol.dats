@@ -30,37 +30,31 @@ fib_trec(n) =
 // this dummy implementation
 //
 implement
-try_fact((*void*)) = 
- let 
-     //val num = n
+try_fact((*void*)) =
+let
      fun more_f(n:int,y:int) =
-     if n = 0 then y else more_f(n-1,n*y)
+     if (n*y) = 0 then n else more_f(n+1,n*y)
    in
-     more_f(9,1) 
-   end 
-//
+     more_f(1,1) 
+ end  
+
 (* ****** ****** *)
 //
 // HX:
 // Please replace
 // this dummy implementation
 //
+implement intsqrt(n) = 0
+(*let
+  fun sqrt(n:int) =
+  
 
 
-
-implement intsqrt(n) = 
-let 
-(* ****** ****** *)
- fun sqrt(n:int):int =
- if n >= 1 
- then 2*sqrt(n/4)
- else 1
-(*****************)
 in
-sqrt(n)
-end
 
-//
+
+end *)//
+(* ****** ****** *)
 
 #ifdef
 MAIN_NONE
