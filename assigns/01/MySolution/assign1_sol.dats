@@ -44,16 +44,9 @@ let
 // Please replace
 // this dummy implementation
 //
-implement intsqrt(n) = 0
-(*let
-  fun sqrt(n:int) =
-  
+implement intsqrt(n):int = 1
+  //sqrt(n)
 
-
-in
-
-
-end *)//
 (* ****** ****** *)
 
 #ifdef
