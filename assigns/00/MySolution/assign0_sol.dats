@@ -13,12 +13,12 @@ implement
 triangle_test(x, y, z)=
     if x <y+z && y <x+z && z <x+y 
     then let
-    val () = println! ("True!")         //Problem on this line
+    val () = println! ("True!")        
     in
     true
     end
     else  let
-    val () = println! ("False!")        //Problem on this line as well 
+    val () = println! ("False!")       
     in
     false
     end
