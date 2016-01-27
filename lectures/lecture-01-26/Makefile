@@ -3,11 +3,15 @@
 #
 
 ######
-
-all:: fact
-regress:: fact; ./fact
-cleanall:: ; $(RMF) fact
-
+#
+all:: \
+HanoiTowers
+#
+regress:: \
+HanoiTowers; ./HanoiTowers
+#
+cleanall:: ; $(RMF) HanoiTowers
+#
 ######
 
 %: %.dats; patscc -o $@ $<
