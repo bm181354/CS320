@@ -44,9 +44,22 @@ let
 // Please replace
 // this dummy implementation
 //
-implement intsqrt(n):int = 1
-  //sqrt(n)
-
+implement intsqrt(n):int = 
+let
+  fun sqrt(n:int): int =
+ if (n >= 1) then 
+   let    
+       val n4 = n / 4
+       val r0 = 2 * sqrt (n4) 
+       val r1 = r0 + 1
+   in
+       if ((r1*r1) <= n) then r1 else r0
+   end
+ else 0 
+in
+ sqrt(n) 
+end
+ 
 (* ****** ****** *)
 
 #ifdef
@@ -71,6 +84,7 @@ val () = println! ("try_fact() = ", try_fact())
 //
 val () = assertloc(intsqrt(100*100) = 100)
 val () = assertloc(intsqrt(100*100-1) = 99)
+val () = println!("Check")
 //
 val () = println! ("Good news: Your code has passed initial testing!")
 //
