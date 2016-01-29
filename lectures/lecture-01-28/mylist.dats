@@ -23,38 +23,41 @@ fun mylist_cons : (int, mylist) -> mylist
 *)
 //
 (* ****** ****** *)
-
+//
 extern
-fun mylist_length : (mylist) -> int
-
-(* ****** ****** *)
-
+fun
+mylist_length : (mylist) -> int
+//
 implement
 mylist_length(xs) =
 case xs of
 | mylist_nil() => 0 // clause
 | mylist_cons(x1, xs2) => mylist_length(xs2) + 1 // clause
-
+//
 (* ****** ****** *)
-
+//
 extern
-fun mylist_build(n: int): mylist
-
+fun
+mylist_build(n: int): mylist
+//
 implement
 mylist_build(n) = let
 //
 fun
 loop (i: int, res: mylist): mylist =
-  if i > 0 then loop(i-1, mylist_cons(i-1, res)) else res
+  if i > 0
+    then loop(i-1, mylist_cons(i-1, res)) else res
+  // end of [if]
 //
 in
   loop(n, mylist_nil())
 end // end of [mylist_build]
-
+//
 (* ****** ****** *)
 //
 extern
-fun mylist_print(mylist): void
+fun
+mylist_print(mylist): void
 //
 implement
 mylist_print(xs) =
