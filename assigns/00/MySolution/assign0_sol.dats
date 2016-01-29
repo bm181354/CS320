@@ -9,7 +9,7 @@
 // this dummy implementation
 //
 implement
-triangle_test(x, y, z) = 123
+triangle_test(x, y, z) = true
 //
 (* ****** ****** *)
 
