@@ -1,6 +1,7 @@
 
+#include "share/atspre_staload.hats"
 
-(* 
+(*
 
 this is a block comment
 
@@ -41,6 +42,8 @@ implement function_name(x, y) = let
 	and is_odd (x: int): bool = 
 		if x = 0 then false else is_even (x - 1)
 
+	val anno_fun = lam (x:int, y:int): int => if x > 0 then x+y else x*y
+
 
 in 
  	// andalso &&
@@ -50,6 +53,10 @@ in
 	then true 
 	else is_even (x) orelse x mod 2 = 0
 end 
+
+implement main0 () = () where {
+	val _ = function_name (1, 2)
+}
 
 
 
