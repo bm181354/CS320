@@ -24,6 +24,12 @@ val N = 10
 //
 val xs = mylist_fromto(0, N)
 //
+val () =
+(
+  print! "xs = [";
+  mylist_print(xs); println! ("]")
+)
+//
 val () = assertloc(mylist_length(xs) = N)
 //
 val () = assertloc(fact(N) = mylist_mul(xs)*N)
