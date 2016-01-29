@@ -15,11 +15,9 @@ mylist =
 | mylist_cons of (int, mylist)
 //
 (*
-
 fun mylist_nil(): mylist
 fun mylist_cons(int, mylist): mylist
 fun mylist_cons : (int, mylist) -> mylist
-
 *)
 //
 (* ****** ****** *)
@@ -66,13 +64,61 @@ case xs of
 | mylist_cons(x, xs) => (println!(x); mylist_print(xs))
 //
 (* ****** ****** *)
+//
+// list concatenation
+//
+extern
+fun
+mylist_append : (mylist, mylist) -> mylist
+//
+implement
+mylist_append(xs, ys) =
+case xs of
+| mylist_nil() => ys
+| mylist_cons(x, xs) => mylist_cons(x, mylist_append(xs, ys))
+//
+(* ****** ****** *)
+//
+extern
+fun
+mylist_reverse : (mylist) -> mylist
+//
+extern
+fun
+mylist_revappend : (mylist, mylist) -> mylist
+//
+implement
+mylist_reverse(xs) = 
+mylist_revappend(xs, mylist_nil())
+//
+implement
+mylist_revappend(xs, ys) =
+case xs of
+| mylist_nil() => ys
+| mylist_cons(x, xs) => mylist_revappend(xs, mylist_cons(x, ys))
+//
+(* ****** ****** *)
 
 implement
 main0() =
 {
   val xs = mylist_build(10)
+  val () = println! ("xs=")
   val () = mylist_print(xs)
-}
+//
+  val xs2 =
+    mylist_append(xs, xs)
+  val () =
+    println!("append(xs, xs):")
+  val () = mylist_print(xs2)
+//
+  val xs_r =
+    mylist_reverse(xs)
+  val () =
+    println! ("reverse(xs):")
+  val () = mylist_print(xs_r)
+//
+} (* end of [main0] *)
 
 (* ****** ****** *)
 
