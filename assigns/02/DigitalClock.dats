@@ -14,6 +14,10 @@
 //
 *)
 (* ****** ****** *)
+//
+// HX: 20 points
+//
+(* ****** ****** *)
 
 (*
 ** Drawing a digital clock
@@ -79,7 +83,7 @@ matrixref_foreach_cloref
     val x = theCanvas[i,NCOL,j]
   in
     print_string(if x = 0 then " " else "X"); if j=NCOL-1 then print_newline()
-  end // end of [let]
+  end // end of [let] // end of [lam]
 ) (* end of [matrixref_foreach] *)
 //
 (* ****** ****** *)
@@ -117,44 +121,6 @@ fun
 draw_vline
   (x0: int, y0: int, n: int): void
 //
-(* ****** ****** *)
-//
-(*
-implement
-draw_hline
-  (x0, y0, n) = (
-//
-if
-n > 0
-then
-{
-  val () = draw_point(x0, y0)
-  val () = draw_hline(x0+1, y0, n-1)
-} (* end of [then] *)
-else () // end of [else]
-//
-) (* end of [draw_hline] *)
-*)
-//
-(*
-implement
-draw_vline
-  (x0, y0, n) = (
-//
-if
-n > 0
-then
-{
-  val () = draw_point(x0, y0)
-  val () = draw_vline(x0, y0+1, n-1)
-} (* end of [then] *)
-else () // end of [else]
-//
-) (* end of [draw_vline] *)
-*)
-//
-(* ****** ****** *)
-//
 implement
 draw_hline
   (x0, y0, n) =
@@ -167,12 +133,9 @@ draw_vline
 //
 (* ****** ****** *)
 
-extern
-fun print_colon(): void
-extern
-fun print_digit(d: int): void
-extern
-fun print_digit2(d2: int): void
+extern fun print_colon(): void
+extern fun print_digit(d: int): void
+extern fun print_digit2(d2: int): void
 
 (* ****** ****** *)
 

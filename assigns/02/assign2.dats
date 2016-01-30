@@ -38,12 +38,7 @@
 //   *******
 //  *********
 *)
-
-(* ****** ****** *)
 //
-(*
-** HX: 10 points
-*)
 extern fun show_triangle (level: int): void
 //
 (* ****** ****** *)
