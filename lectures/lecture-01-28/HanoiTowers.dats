@@ -55,4 +55,8 @@ else (A, B, C)
 
 (* ****** ****** *)
 
+implement main0 () =
+
+(* ****** ****** *)
+
 (* end of [HanoiTowers.dats] *)
