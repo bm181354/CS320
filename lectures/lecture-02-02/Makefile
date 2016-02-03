@@ -14,6 +14,16 @@ cleanall:: ; $(RMF) mylist2
 #
 ######
 
+all:: \
+show_square
+#
+regress:: \
+show_square; ./show_square
+#
+cleanall:: ; $(RMF) show_square
+#
+######
+
 %: %.dats; patscc -DATS_MEMALLOC_LIBC -o $@ $<
 
 ######
