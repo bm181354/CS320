@@ -46,16 +46,12 @@ then let
   val B = X.2
 *)
   val (A, C, B) = nmove(n-1, A, C, B)
-  val (A, B) = move(A, B)
+  val (A, B)    = move(A, B)
   val (C, B, A) = nmove(n-1, C, B, A)
 in
   (A, B, C)
 end // end of [then]
 else (A, B, C)
-
-(* ****** ****** *)
-
-implement main0 () =
 
 (* ****** ****** *)
 
