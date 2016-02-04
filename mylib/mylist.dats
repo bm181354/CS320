@@ -7,6 +7,21 @@
 staload "libats/ML/SATS/basis.sats"
 
 (* ****** ****** *)
+
+(*
+//
+datatype
+list0(a:t@ype) =
+| list0_nil of ()
+| list0_cons of (a, list0(a))
+//
+#define nil0 list0_nil
+#define :: list0_cons
+#define cons0 list0_cons
+//
+*)
+
+(* ****** ****** *)
 //
 extern
 fun
