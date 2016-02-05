@@ -44,7 +44,7 @@ val () = assertloc(x >= 0)
 val () = assertloc(width >= x)
 //
 in
-  nshow(width-x, ' '); nshow(2*x, 'O'); nshow(width-x, ' '); print_newline()
+  nshow(width-x, ' '); nshow(2*x, 'O'); nshow(width-x, ' ');
 end // end of [show_disk]
 
 (* ****** ****** *)
