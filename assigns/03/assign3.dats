@@ -29,7 +29,7 @@ extern
 fun
 show_disk
 (
-  width: int, x: int
+  radius: int, x: int
 ) : void
 //
 (* ****** ****** *)
@@ -41,13 +41,13 @@ nshow(n: int, c: char) =
 (* ****** ****** *)
 
 implement
-show_disk(width, x) = let
+show_disk(radius, x) = let
 //
 val () = assertloc(x >= 0)
-val () = assertloc(width >= x)
+val () = assertloc(radius >= x)
 //
 in
-  nshow(width-x, ' '); nshow(2*x, 'O'); nshow(width-x, ' ');
+  nshow(radius-x, ' '); nshow(2*x, 'O'); nshow(radius-x, ' ');
 end // end of [show_disk]
 
 (* ****** ****** *)
@@ -55,8 +55,8 @@ end // end of [show_disk]
 // HX: 20 points
 //
 // Please think of a way to print 3 poles
-// side-by-side. Note that 'width' is the width
-// for one pole; 'height' is the height of poles
+// side-by-side. Note that 'radius' is the
+// pole radius; 'height' is the pole height
 //
 // There is no strict specification as to what
 // you need to do. Any "reasonable" output will
@@ -66,7 +66,7 @@ extern
 fun
 show_poles
 (
-  width: int, height: int
+  radius: int, height: int
 , xs1: list0(int), xs2: list0(int), xs3: list0(int)
 ) : void // end of [show_poles]
 //
