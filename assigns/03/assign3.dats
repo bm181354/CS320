@@ -22,6 +22,9 @@
 //
 (* ****** ****** *)
 //
+// HX:
+// It is implemented
+//
 extern
 fun
 show_disk
@@ -50,6 +53,14 @@ end // end of [show_disk]
 (* ****** ****** *)
 //
 // HX: 20 points
+//
+// Please think of a way to print 3 poles
+// side-by-side. Note that 'width' is the width
+// for one pole; 'height' is the height of poles
+//
+// There is no strict specification as to what
+// you need to do. Any "reasonable" output will
+// earn your full credit (that is, 20 points).
 //
 extern
 fun
