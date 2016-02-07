@@ -26,6 +26,27 @@ list0(a:t@ype) =
 extern
 fun
 {a:t@ype}
+mylist_length(list0(a)): int
+//
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+mylist_length(xs) = let
+//
+fun loop(xs: list0(a), res: int): int =
+  case+ xs of
+  | list0_nil() => res | list0_cons(_, xs) => loop(xs, res+1)
+//
+in
+  loop(xs, 0)
+end // end of [mylist_length]
+
+(* ****** ****** *)
+//
+extern
+fun
+{a:t@ype}
 mylist_append : (list0(a), list0(a)) -> list0(a)
 //
 (* ****** ****** *)
