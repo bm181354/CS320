@@ -134,4 +134,94 @@ end // end of [mylist_append]
 
 (* ****** ****** *)
 
+//
+extern
+fun
+insertion_sort
+  (xs: list0(int)): list0(int)
+//
+(* ****** ****** *)
+
+local
+
+fun
+insord
+(
+  xs: list0(int), x0: int
+) : list0(int) =
+(
+case+ xs of
+| nil0() => cons0(x0, nil0)
+| cons0(x1, xs2) =>
+  if x0 <= x1
+    then cons0(x0, xs)
+    else cons0(x1, insord(xs2, x0))
+  // end of [if]
+) (* insord *)
+
+in (* in-of-local *)
+
+implement
+insertion_sort
+  (xs) =
+(
+case+ xs of
+| nil0() => nil0()
+| cons0(x, xs) => insord(insertion_sort(xs), x)
+)
+
+end // end of [local]
+
+(* ****** ****** *)
+//
+extern
+fun
+quick_sort
+  (xs: list0(int)): list0(int)
+//
+(* ****** ****** *)
+
+local
+
+fun
+qsort
+(
+  xs: list0(int)
+) : list0(int) =
+(
+case+ xs of
+| nil0() => nil0()
+| cons0(x, xs) => qpart(x, xs, nil0(), nil0())
+)
+
+and
+qpart
+(
+  x0: int
+, xs: list0(int)
+, left: list0(int), right: list0(int)
+) : list0(int) =
+(
+case+ xs of
+| nil0() => let
+    val left = qsort(left)
+    val right = qsort(right)
+  in
+    mylist_append(left, cons0(x0, right))
+  end // end of [nil0]
+| cons0(x1, xs2) =>
+  if x1 <= x0
+    then qpart(x0, xs2, cons0(x1, left), right)
+    else qpart(x0, xs2, left, cons0(x1, right))
+  // end of [if]
+)
+
+in (* in-of-local *)
+
+implement quick_sort(xs) = qsort(xs)
+
+end // end of [local]
+
+(* ****** ****** *)
+
 (* end of [mylist.dats] *)
