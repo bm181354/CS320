@@ -26,6 +26,32 @@ list0(a:t@ype) =
 extern
 fun
 {a:t@ype}
+mylist_head(list0(a)): (a)
+extern
+fun
+{a:t@ype}
+mylist_tail(list0(a)): list0(a)
+//
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+mylist_head(xs) =
+(
+  case- xs of list0_cons(x, _) => x
+)
+implement
+{a}(*tmp*)
+mylist_tail(xs) =
+(
+  case- xs of list0_cons(_, xs) => xs
+)
+
+(* ****** ****** *)
+//
+extern
+fun
+{a:t@ype}
 mylist_length(list0(a)): int
 //
 (* ****** ****** *)
