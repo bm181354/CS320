@@ -133,74 +133,80 @@ in
 end // end of [mylist_append]
 
 (* ****** ****** *)
-
 //
 extern
-fun
-insertion_sort
-  (xs: list0(int)): list0(int)
+fun{a:t@ype}
+mylist_insort(xs: list0(a)): list0(a)
 //
 (* ****** ****** *)
 
-local
-
+implement
+{a}(*tmp*)
+mylist_insort
+  (xs) = let
+//
 fun
 insord
 (
-  xs: list0(int), x0: int
-) : list0(int) =
-(
+  xs: list0(a), x0: a
+) : list0(a) = (
+//
 case+ xs of
-| nil0() => cons0(x0, nil0)
-| cons0(x1, xs2) =>
-  if x0 <= x1
-    then cons0(x0, xs)
-    else cons0(x1, insord(xs2, x0))
-  // end of [if]
+| nil0() =>
+  cons0(x0, nil0)
+| cons0(x1, xs2) => let
+    val sgn =
+    gcompare_val_val<a> (x0, x1)
+  in
+    if sgn <= 0
+      then cons0(x0, xs)
+      else cons0(x1, insord(xs2, x0))
+    // end of [if]
+  end // end of [cons0]
+//
 ) (* insord *)
-
-in (* in-of-local *)
-
-implement
-insertion_sort
-  (xs) =
-(
+//
+in
+//
 case+ xs of
 | nil0() => nil0()
-| cons0(x, xs) => insord(insertion_sort(xs), x)
-)
-
-end // end of [local]
+| cons0(x, xs) =>
+  (
+    insord(mylist_insort(xs), x)
+  )
+//
+end // end of [mylist_insort]
 
 (* ****** ****** *)
 //
 extern
-fun
-quick_sort
-  (xs: list0(int)): list0(int)
+fun{a:t@ype}
+mylist_quicksort(xs: list0(a)): list0(a)
 //
 (* ****** ****** *)
 
-local
-
+implement
+{a}(*tmp*)
+mylist_quicksort(xs) = let
+//
 fun
 qsort
 (
-  xs: list0(int)
-) : list0(int) =
+  xs: list0(a)
+) : list0(a) =
 (
 case+ xs of
 | nil0() => nil0()
 | cons0(x, xs) => qpart(x, xs, nil0(), nil0())
 )
-
+//
 and
 qpart
 (
-  x0: int
-, xs: list0(int)
-, left: list0(int), right: list0(int)
-) : list0(int) =
+  x0: a
+, xs: list0(a)
+, left: list0(a), right: list0(a)
+) : list0(a) =
 (
 case+ xs of
 | nil0() => let
@@ -209,18 +215,178 @@ case+ xs of
   in
     mylist_append(left, cons0(x0, right))
   end // end of [nil0]
-| cons0(x1, xs2) =>
-  if x1 <= x0
-    then qpart(x0, xs2, cons0(x1, left), right)
-    else qpart(x0, xs2, left, cons0(x1, right))
-  // end of [if]
+| cons0(x1, xs2) => let
+    val sgn = gcompare_val_val<a> (x1, x0)
+  in
+    if sgn <= 0
+      then qpart(x0, xs2, cons0(x1, left), right)
+      else qpart(x0, xs2, left, cons0(x1, right))
+    // end of [if]
+  end // end of [cons0]
 )
+//
+in
+  qsort(xs)
+end // end of [mylist_quicksort]
 
-in (* in-of-local *)
+(* ****** ****** *)
 
-implement quick_sort(xs) = qsort(xs)
+extern
+fun{a:t@ype}
+mylist_take(xs: list0(a), n:int): list0(a)
+extern
+fun{a:t@ype}
+mylist_drop(xs: list0(a), n:int): list0(a)
 
-end // end of [local]
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+mylist_take
+  (xs, n) = (
+//
+if
+n > 0
+then let
+  val-list0_cons(x, xs) = xs
+in
+  list0_cons(x, mylist_take(xs, n-1))
+end // end of [then]
+else list0_nil() // end of [else]
+//
+) (* end of [mylist_take] *)
+
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+mylist_drop
+  (xs, n) = (
+//
+if
+n > 0
+then let
+  val-list0_cons(x, xs) = xs
+in
+  mylist_drop(xs, n-1)
+end // end of [then]
+else xs // end of [else]
+//
+) (* end of [mylist_drop] *)
+
+(* ****** ****** *)
+//
+extern
+fun{a:t@ype}
+mylist_split(xs: list0(a)): (list0(a), list0(a))
+//
+(* ****** ****** *)
+(*
+//
+implement
+{a}(*tmp*)
+mylist_split(xs) = let
+//
+fun
+aux
+(
+  xs: list0(a)
+, ys: list0(a), zs: list0(a)
+) : (list0(a), list0(a)) = (
+//
+case+ xs of
+| list0_nil() => (ys, zs)
+| list0_cons(x1, xs) =>
+  (
+    case+ xs of
+    | list0_nil() =>
+      (list0_cons(x1, ys), zs)
+    | list0_cons(x2, xs) => let
+        val ys = list0_cons(x1, ys)
+        val zs = list0_cons(x2, zs)
+      in
+        aux(xs, ys, zs)
+      end
+  )
+)
+//
+val (ys, zs) =
+  aux(xs, list0_nil(), list0_nil())
+//
+in
+  (mylist_reverse(ys), mylist_reverse(zs))
+end // end of [mylist_split]
+//
+*)
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+mylist_split(xs) = let
+  val n = mylist_length<a>(xs)
+  val n2 = n/2
+  val ys = mylist_take(xs, n-n2)
+  val zs = mylist_drop(xs, n-n2)
+in
+  (ys, zs)
+end
+
+(* ****** ****** *)
+//
+extern
+fun
+{a:t@ype}
+mylist_mergesort
+  (xs: list0(a)): list0(a)
+//
+(* ****** ****** *)
+
+implement
+{a}(*tmp*)
+mylist_mergesort
+  (xs) = let
+//
+fun
+merge
+(
+  ys: list0(a), zs: list0(a)
+) : list0(a) =
+(
+case+ ys of
+| list0_nil() => zs
+| list0_cons(y, ys2) =>
+  (
+    case+ zs of
+    | list0_nil() => ys
+    | list0_cons(z, zs2) => let
+        val sgn =
+        gcompare_val_val<a> (y, z)
+      in
+        if sgn <= 0
+          then list0_cons(y, merge(ys2, zs))
+          else list0_cons(z, merge(ys, zs2))
+        // end of [if]
+      end // end of [list0_cons]
+  )
+)
+//
+in
+//
+case+ xs of
+| list0_nil() => xs
+| list0_cons(_, xs2) =>
+  (
+    case+ xs2 of
+    | list0_nil() => xs
+    | list0_cons(_, _) => let
+        val (ys, zs) = mylist_split(xs)
+        val ys = mylist_mergesort(ys)
+        and zs = mylist_mergesort(zs)
+      in
+        merge(ys, zs)
+      end
+  )
+end // end of [mylist_mergesort]
 
 (* ****** ****** *)
 
