@@ -389,5 +389,82 @@ case+ xs of
 end // end of [mylist_mergesort]
 
 (* ****** ****** *)
+//
+extern
+fun
+{a:t@ype}
+mylist_filter
+  (xs: list0(a), p: (a) -<cloref1> bool): list0(a)
+//
+implement
+{a}(*tmp*)
+mylist_filter
+  (xs, p) = let
+//
+fun
+aux(xs: list0(a)): list0(a) =
+(
+case+ xs of
+| list0_nil() => list0_nil()
+| list0_cons(x, xs) =>
+    if p(x) then list0_cons(x, aux(xs)) else aux(xs)
+  // end of [list0_cons]
+)
+//
+in
+  aux(xs)
+end // end of [mylist_filter]
+//
+(* ****** ****** *)
+//
+extern
+fun
+{a,b:t@ype}
+mylist_foldleft
+  (xs: list0(a), init: b, fopr: (b, a) -<cloref1> b): b
+//
+implement
+{a,b}(*tmp*)
+mylist_foldleft
+  (xs, init, fopr) = let
+//
+fun
+aux(xs: list0(a), init: b): b =
+(
+case+ xs of
+| list0_nil() => init
+| list0_cons(x, xs) => aux(xs, fopr(init, x))
+)
+//
+in
+  aux(xs, init)
+end // end of [mylist_foldleft]
+//
+(* ****** ****** *)
+//
+extern
+fun
+{a,b:t@ype}
+mylist_foldright
+  (xs: list0(a), fopr: (a, b) -<cloref1> b, sink: b): b
+//
+implement
+{a,b}(*tmp*)
+mylist_foldright
+  (xs, fopr, sink) = let
+//
+fun
+aux(xs: list0(a), sink: b): b =
+(
+case+ xs of
+| list0_nil() => sink
+| list0_cons(x, xs) => fopr(x, aux(xs, sink))
+)
+//
+in
+  aux(xs, sink)
+end // end of [mylist_foldright]
+//
+(* ****** ****** *)
 
 (* end of [mylist.dats] *)
