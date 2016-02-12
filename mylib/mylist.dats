@@ -73,6 +73,57 @@ end // end of [mylist_length]
 extern
 fun
 {a:t@ype}
+mylist_make_elt(n: int, x: a): list0(a)
+//
+implement
+{a}(*tmp*)
+mylist_make_elt
+  (n, x) = let
+//
+fun
+aux
+(
+  n: int, res: list0(a)
+) : list0(a) =
+(
+if n > 0
+  then aux(n-1, list0_cons(x, res)) else res
+) (* end of [aux] *)
+//
+in
+  aux(n, list0_nil((*void*)))
+end // end of [mylist_make_elt]
+//
+(* ****** ****** *)
+//
+extern
+fun
+mylist_make_intrange
+  (m: int, n: int): list0(int)
+//
+implement
+mylist_make_intrange
+  (m, n) = let
+//
+fun
+aux
+(
+  n: int, res: list0(int)
+) : list0(int) =
+(
+if n > m
+  then aux(n-1, list0_cons(n-1, res)) else res
+)
+//
+in
+  aux(n, list0_nil((*void*)))
+end // end of [mylist_make_intrange]
+//
+(* ****** ****** *)
+//
+extern
+fun
+{a:t@ype}
 mylist_append : (list0(a), list0(a)) -> list0(a)
 //
 (* ****** ****** *)
