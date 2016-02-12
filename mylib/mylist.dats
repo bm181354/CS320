@@ -470,6 +470,30 @@ end // end of [mylist_filter]
 //
 extern
 fun
+{a:t@ype}
+mylist_foreach
+  (xs: list0(a), fwork: (a) -<cloref1> void): void
+//
+implement
+{a}(*tmp*)
+mylist_foreach
+  (xs, fwork) = let
+//
+fun
+loop(xs: list0(a)): void =
+(
+  case+ xs of
+  | list0_nil() => () | list0_cons(x, xs) => (fwork(x); loop(xs))
+)
+//
+in
+  loop(xs)
+end // end of [mylist_foreach]
+//
+(* ****** ****** *)
+//
+extern
+fun
 {a,b:t@ype}
 mylist_foldleft
   (xs: list0(a), init: b, fopr: (b, a) -<cloref1> b): b
@@ -516,6 +540,36 @@ in
   aux(xs, sink)
 end // end of [mylist_foldright]
 //
+(* ****** ****** *)
+//
+extern
+fun
+{a,b:t@ype}
+mylist_zip
+  (xs: list0(a), ys: list0(b)): list0(@(a, b))
+//
+implement
+{a,b}
+mylist_zip
+  (xs, ys) = let
+//
+fun
+aux
+(
+  xs: list0(a), ys: list0(b)
+) : list0(@(a, b)) =
+(
+case+ (xs, ys) of
+| (list0_nil(), _) => list0_nil()
+| (_, list0_nil()) => list0_nil()
+| (list0_cons(x, xs),
+   list0_cons(y, ys)) => list0_cons((x, y), aux(xs, ys))
+)
+//
+in
+  aux(xs, ys)
+end // end of [mylist_zip]
+
 (* ****** ****** *)
 
 (* end of [mylist.dats] *)
