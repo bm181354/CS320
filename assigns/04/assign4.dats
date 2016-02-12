@@ -74,15 +74,7 @@ end // end of [pole_padding]
 
 (* ****** ****** *)
 //
-// HX: 20 points
-//
-// Please think of a way to print 3 poles
-// side-by-side. Note that 'radius' is the
-// pole radius; 'height' is the pole height
-//
-// There is no strict specification as to what
-// you need to do. Any "reasonable" output will
-// earn your full credit (that is, 20 points).
+// HX: implemented
 //
 extern
 fun
@@ -93,6 +85,11 @@ show_poles
 ) : void // end of [show_poles]
 //
 (* ****** ****** *)
+//
+// HX: 10 points
+// Please implement [mylist_zip3]
+// Hint: Please take a look at the implementation
+// of mylist_zip in mylib/mylist.dats
 //
 extern
 fun
